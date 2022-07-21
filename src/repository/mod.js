@@ -8,7 +8,12 @@ const getById = async (a) => {
   return await getKnex()(tables.mod).select("url").where('id', a);
 };
 
+const getByCode = async (a)=>{
+  return await getKnex()(tables.codes).select().where("code",a)
+}
+
 module.exports = {
   getAll,
   getById,
+  getByCode
 };

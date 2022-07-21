@@ -3,22 +3,19 @@ const mod = require("../service/mod");
 const Joi = require("joi");
 const validate = require("./_validation");
 
-const getAll = async (ctx) => {
-  ctx.body = await mod.getAll();
-};
-
 const getById = async (ctx) => {
-  ctx.body = await mod.getById(ctx.params.id);
+  ctx.body = await mod.getByCode(ctx.params.id);
 };
 getById.validateScheme = {
   params: {
-    id: Joi.number(),
+    id: Joi.string().uuid(),
   },
 };
 
+
 module.exports = (app) => {
   const router = new Router({
-    prefix: "/mods",
+    prefix: "/code",
   });
   router.get("/", getAll);
   router.get("/:id", validate(getById.validateScheme), getById);

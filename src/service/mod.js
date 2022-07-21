@@ -20,9 +20,18 @@ const getById = async (a) => {
   }
   return e;
 };
+const getByCode = async (a)=>{
+  debugLog('Getting mod by code')
+  const e = await mod.getByCode(a)
+  if (!e[0]) {
+    throw ServiceError.notFound(`Code ${a} was not found`);
+  }
+  return e;
+}
 
 
 module.exports = {
   getAll,
   getById,
+  getByCode
 };

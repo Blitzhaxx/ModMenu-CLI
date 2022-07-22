@@ -1,7 +1,7 @@
 const { tables, getKnex } = require('../data');
 
 const getAll = async () => {
-  return await getKnex()(tables.mod).select("id","name").orderBy('name', 'desc');
+  return await getKnex()(tables.mod).select("id","name","author").orderBy('id', 'desc');
 };
 
 const getById = async (a) => {

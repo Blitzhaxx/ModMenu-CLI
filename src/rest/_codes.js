@@ -17,7 +17,6 @@ module.exports = (app) => {
   const router = new Router({
     prefix: "/code",
   });
-  router.get("/", getAll);
   router.get("/:id", validate(getById.validateScheme), getById);
 
   app.use(router.routes()).use(router.allowedMethods());

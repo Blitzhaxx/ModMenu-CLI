@@ -9,11 +9,15 @@ const getById = async (a) => {
 };
 
 const getByCode = async (a)=>{
-  return await getKnex()(tables.codes).select().where("code",a)
+  return await getKnex()(tables.codes).select("id","author","name","version","code").where("code",a)
+}
+const getByCodeId = async (a)=>{
+  return await getKnex()(tables.codes).select("url").where('code',a)
 }
 
 module.exports = {
   getAll,
   getById,
-  getByCode
+  getByCode,
+  getByCodeId
 };

@@ -28,10 +28,18 @@ const getByCode = async (a)=>{
   }
   return e;
 }
-
+const getByCodeId = async (a)=>{
+  debugLog("Getting url of ", a)
+  const e = await mod.getByCodeId(a)
+  if (!e[0]) {
+    throw ServiceError.notFound(`Private mod ${a} not found`)
+  }
+  return e
+}
 
 module.exports = {
   getAll,
   getById,
-  getByCode
+  getByCode,
+  getByCodeId
 };

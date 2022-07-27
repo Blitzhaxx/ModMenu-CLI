@@ -17,6 +17,8 @@ const getById = async (a) => {
  
   if (!e[0]) {
     throw ServiceError.notFound(`Mod ${a} was not found`);
+  } else {
+  await mod.updateCounter(a)
   }
   return e;
 };
@@ -33,6 +35,8 @@ const getByCodeId = async (a)=>{
   const e = await mod.getByCodeId(a)
   if (!e[0]) {
     throw ServiceError.notFound(`Private mod ${a} not found`)
+  } else {
+    await mod.updateCodeCounter(a)
   }
   return e
 }

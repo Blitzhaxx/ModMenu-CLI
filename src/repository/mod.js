@@ -14,10 +14,32 @@ const getByCode = async (a)=>{
 const getByCodeId = async (a)=>{
   return await getKnex()(tables.codes).select("url").where('code',a)
 }
+const updateCounter = async (a)=>{
+  try {
+  await getKnex().transaction(async trx=>{
+    const num = await getKnex()(tables.mod).select("counter").where('id',a).transacting(trx)
+    await getKnex()(tables.mod).update('counter',num[0].counter +1).where('id',a).transacting(trx)
+  })
+} catch (error) {
+  console.log("Couldn't update counter for "+a)
+}
+}
+const updateCodeCounter = async (a)=>{
+  try {
+    await getKnex().transaction(async trx=>{
+      const num = await getKnex()(tables.codes).select("counter").where('code',a).transacting(trx)
+      await getKnex()(tables.codes).update('counter',num[0].counter +1).where('code',a).transacting(trx)
+    })
+  } catch (error) {
+    console.log("Couldn't update counter for "+a)
+  }
+}
 
 module.exports = {
   getAll,
   getById,
   getByCode,
-  getByCodeId
+  getByCodeId,
+  updateCounter,
+  updateCodeCounter
 };

@@ -35,7 +35,7 @@ const updateCodeCounter = async (a)=>{
   }
 }
 const getCounters = async ()=>{
-  return await getKnex()(tables.mod).select("name","counter")
+  return await getKnex()(tables.mod).select("name","counter").orderBy("counter","desc")
 }
 
 module.exports = {

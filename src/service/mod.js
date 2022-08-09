@@ -40,10 +40,15 @@ const getByCodeId = async (a)=>{
   }
   return e
 }
+const getCounters = async ()=>{
+  debugLog("Getting counters")
+  return await mod.getCounters()
+}
 
 module.exports = {
   getAll,
   getById,
   getByCode,
-  getByCodeId
+  getByCodeId,
+  getCounters
 };

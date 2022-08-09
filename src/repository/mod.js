@@ -34,6 +34,9 @@ const updateCodeCounter = async (a)=>{
     console.log("Couldn't update counter for "+a)
   }
 }
+const getCounters = async ()=>{
+  return await getKnex()(tables.mod).select("name","counter")
+}
 
 module.exports = {
   getAll,
@@ -41,5 +44,6 @@ module.exports = {
   getByCode,
   getByCodeId,
   updateCounter,
-  updateCodeCounter
+  updateCodeCounter,
+  getCounters
 };

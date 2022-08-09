@@ -15,12 +15,16 @@ getById.validateScheme = {
     id: Joi.number(),
   },
 };
+const getCounters = async (ctx)=>{
+  ctx.body = await mod.getCounters()
+}
 
 module.exports = (app) => {
   const router = new Router({
     prefix: "/mods",
   });
   router.get("/", getAll);
+  router.get("/counters",getCounters)
   router.get("/:id", validate(getById.validateScheme), getById);
 
   app.use(router.routes()).use(router.allowedMethods());

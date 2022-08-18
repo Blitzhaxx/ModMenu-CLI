@@ -9,7 +9,9 @@ const debugLog = (message, meta = {}) => {
 
 const getAll = async () => {
   debugLog('Fetching all mods');
-  return await mod.getAll();
+  const list = await mod.getAll()
+  list.unshift({id: "ATTENTION", name: "Due to the 9.2 update, this menu may not function properly anymore. Please have patience until this issue is resolved.", author:"Blitzhax",version:null})
+  return list;
 };
 const getById = async (a) => {
   debugLog('Getting mod', { a });

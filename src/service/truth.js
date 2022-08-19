@@ -16,6 +16,16 @@ const debugLog = (message, meta = {}) => {
     return e;
   }
 
+  const getUpdate = async ()=>{
+    debugLog("Getting update url")
+    const e = await truth.getUpdate()
+    if (!e[0]) {
+      throw ServiceError.notFound("Update url not found")
+    }
+    return e
+  }
+
   module.exports = {
-    getByName
+    getByName,
+    getUpdate
   }

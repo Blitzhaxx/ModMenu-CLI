@@ -67,7 +67,8 @@ function getKnex() {
 }
 const tables = Object.freeze({
   mod: "mods",
-  codes: "codes"
+  codes: "codes",
+  truth: "truth"
 });
 async function shutDownData() {
   getLogger().info("Shutting down database connection");

@@ -1,0 +1,4 @@
+{
+    "buildCommand": "node src/index.js",
+    "installCommand": "yarn install --frozen-lockfile"
+}
